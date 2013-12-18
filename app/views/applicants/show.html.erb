@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @applicant.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @applicant.name %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @applicant.slug %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @applicant.phone_number %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @applicant.comment %>
+</p>
+
+<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
+<%= link_to 'Back', applicants_path %>
