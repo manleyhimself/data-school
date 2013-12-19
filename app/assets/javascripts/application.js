@@ -12,12 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require ../../../vendor/assets/javascripts/bootstrap.js
-//= require ../../../vendor/assets/javascripts/jquery-1.8.2.min.js
-//= require ../../../vendor/assets/javascripts/jquery.easing.1.3.js
-//= require ../../../vendor/assets/javascripts/jquery.knob.js
-//= require ../../../vendor/assets/javascripts/main.js
-//= require ../../../vendor/assets/javascripts/modernizer.js
-//= require ../../../vendor/assets/javascripts/waypoints.min.js
 // require turbolinks
 //= require_tree .

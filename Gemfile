@@ -18,6 +18,12 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Twitter Bootstrap styling
+gem "therubyracer"
+# http://stackoverflow.com/questions/15352901/rails-4-app-on-heroku-works-but-errors-in-log
+
+
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
