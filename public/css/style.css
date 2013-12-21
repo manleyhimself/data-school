@@ -14,6 +14,15 @@
 
 /* Global */
 
+#underline:hover {
+  text-decoration: underline;
+}
+
+p {
+    line-height: 1.5;
+    font-size: 1.75rem;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -329,7 +338,7 @@ a:hover {
 /* Section 1 */ 
 
 #section1 {
-	background:#7f8c8d;
+	background: rgba(232,236,237);
 	-webkit-background-size: 100% auto;
 	-moz-background-size: 100% auto;
 	-o-background-size: 100% auto;
@@ -347,11 +356,12 @@ a:hover {
 
 #section1 .intro h1 {
 	color: #F1F1F1;
-    font-size: 85px; font-size: 8.5rem;
-    font-weight: 500;
-    letter-spacing: -2px;
-    line-height: 85px;
-    margin-left: -5px;
+  font-size: 85px; font-size: 8.5rem;
+  font-weight: 500;
+  letter-spacing: -2px;
+  line-height: 85px;
+  margin-left: -5px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #section1 .intro h3 {
@@ -361,6 +371,7 @@ a:hover {
     line-height: 28px;
     margin: 0px;
     width: 80%;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
 }
 
@@ -389,8 +400,9 @@ a:hover {
 /* Section 3 */ 
 
 #section3 {
-	background-image:url(../img/project-bg.jpg);
-	color: #F1F1F1;
+/*	background-image:url(../img/project-bg.jpg);
+*/	color: #F1F1F1;
+    background-color: #1abc9c;
 }
 
 #section3 h2 {
@@ -404,10 +416,17 @@ a:hover {
 	background-color: #F1F1F1;
 }
 
-
+#section3 .content img:hover {
+  background-color: #ccc;
+}
 
 
 /* Section 4 */
+
+#r-header:hover, #python-header:hover {
+  color: #47A888;
+  cursor: pointer; 
+}
 
 #section4  h2 {
 	margin-left: -4px;
@@ -469,58 +488,58 @@ a:hover {
 }
 
 
-/* Section 5 */
+/* Section 6 */
 
-#section5 {
+#section6 {
 	background:#1abc9c;
 	color: #F1F1F1;
 	padding-bottom: 0px;
 }
 
-#section5 h4.intro {
+#section6 h4.intro {
 	border-bottom: 1px solid #F1F1F1;
     height: 35px;
     margin-bottom: 18px;
 }
 
-#section5 .content {
+#section6 .content {
 	position: relative;
 }
 
-#section5 .content .alt {
+#section6 .content .alt {
 	margin-top: 20px;
 }
 
-#section5 .content .alt h4 {
+#section6 .content .alt h4 {
 	line-height: 24px;
 	margin: 0;
 	padding-right: 20px;
 }
 
-#section5 .content .alt h4, #section6 .content .alt span {
+#section6 .content .alt h4, #section6 .content .alt span {
 	display: inline-block;
 }
 
-#section5 .content .alt h5 {
+#section6 .content .alt h5 {
 	display: inline;
     line-height: 20px;
     margin: 0;
     padding-right: 10px;
 }
 
-#section5 .content .span4 {
+#section6 .content .span4 {
 	padding-right: 25px;
 }
 
-#section5 .btn-default {
+#section6 .btn-default {
     margin-top: 15px;
 }
 
-#section5 #footer {
+#section6 #footer {
 	margin: 200px 0 40px;
 }
 
-#section5 #footer p {
+#section6 #footer p {
 	font-size: 14px; font-size: 1.4rem;
 }
 
@@ -587,7 +606,7 @@ a:hover {
 	}
 	
 	#section1 .intro {
-		margin: 100px 0;
+		margin: 100px 0 0;
 	}		
 	
 	#section1 .intro h3 {
@@ -632,7 +651,7 @@ a:hover {
 		line-height: 22px;
 	}
 
-	#section5 .content .span4 {
+	#section6 .content .span4 {
 		padding-right: 0px;
 	}
 	
@@ -711,7 +730,7 @@ a:hover {
 		margin-top: 30px;
 	}
 		
-    #section5 .span8 {
+    #section6 .span8 {
 	    margin-top: 30px;
     }
     
@@ -785,6 +804,82 @@ a:hover {
 
 }
 
+#meetup {
+  color: #2d2d2d;
+}
+
+#meetup:hover {
+  text-decoration: underline;
+}
+
+
+/* Section 5 (Price Tables) */
+
+#section5 {
+  border-top: 1px solid white;
+}
+
+.pricing-table-wrapper {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.pricing-table {
+  display:inline-block;
+}
+
+.pricing-column {
+  list-style:none;
+  position:relative;
+  
+  -webkit-transition:0.3s;
+  -moz-transition:0.3s;
+  transition:0.3s;
+}
+
+
+.pricing-column:hover > .pricing-title {
+    border-top: 5px solid #79A9C6;
+}
+
+.pricing-column:hover > .pricing-button {
+    background-color: #d7d7d7;
+}
+
+.pricing-column li {
+  white-space:nowrap;
+  text-align:center;
+  padding:12px;
+  background:rgba(0,0,0,0.01);
+  border-bottom:1px dotted rgba(0,0,0,0.1);
+}
+
+.pricing-column li:nth-child(even) {
+  background:#e3e3e3;
+}
+
+.pricing-column li.pricing-title {
+    font-weight:600;
+    border-top: 3px solid rgba(0,0,0,0.6);
+    font-size:20px;
+}
+
+.pricing-column li.pricing-price {
+  color:#79A9C6;
+  font-size: 200%;
+  line-height: 120%;
+}
+
+.pricing-column li.pricing-price span {
+  font-size:45%;
+  line-height:120%;
+}
+
+.pricing-column .pricing-button .button {
+  margin:0 !important;
+    font-size: 18px;
+    color:#c0392b
+}
 
 
 
