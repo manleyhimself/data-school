@@ -513,7 +513,7 @@
 					                        <li class="pricing-price">$550 <span>/course</span></li>
 					                        <li class="pricing-price">$120 <span>/class</span></li>
 					                        <li class="pricing-price"><span>10% tuition reduction for Veterans</span></li>
-					                        
+
 
 					                        
 					                    </ul>
@@ -551,6 +551,21 @@
 									<h5>Twitter:</h5>
 									<span><a href="http://www.twitter.com/basicoh_" rel="external">@Basicoh_</a></span>
 								</div><!-- /row -->
+								
+								<div class="row-fluid alt">
+								</div><!-- /row -->
+
+								<div class="row-fluid alt">
+
+									<h4 class="intro">Total Cost of Tuition</h4>
+
+								</div><!-- /row -->
+								<div class="row-fluid alt">
+
+													<p> $555 </p>
+
+								</div><!-- /row -->
+
 							</div><!-- /span4 -->
 							
 							<div class="span8">
@@ -560,41 +575,68 @@
 									</div><!-- /span12 -->
 								</div><!-- /row-fluid -->
 								
-								<form method="POST" action="#">
+								<%= form_for Applicant.new do |f| %>
+									
 									
 									<div class="row-fluid">
 										<div class="span6">
 											<div class="control-group">
-												<label for="name" class="control-label">Name:</label>
+													<div class="checkbox">
+														<%= check_box_tag 'r-class'%>
+														<%= label_tag 'r-class', "R Class" %>
+													</div>
+													<%= f.label :r_class_payment, "Classes Attending",class: "control-label"%>
 												<div class="controls">
-													<input class="span12" type="text" name="contact_name" id="name">
+													<%= f.select :r_class_payment, options_for_select([["1", 1]], 1), {}, class:"form-group"%>
 												</div><!-- /controls -->
 											</div><!-- /control-group -->
 										</div><!-- /span6 -->
 										<div class="span6">
 											<div class="control-group">
-												<label for="email" class="control-label">Email:</label>
+												<div class="checkbox">
+														<%= check_box_tag 'python-class'%>
+														<%= label_tag 'python-class', "Python Class" %>
+												</div>
+													<%= f.label :python_class_payment, "Classes Attending",class: "control-label"%>
 												<div class="controls">
-													<input class="span12" type="email" name="contact_email" id="email">
+													<%= f.select :python_class_payment, options_for_select([["1", 1]], 1), {}, class:"form-group"%>
 												</div><!-- /controls -->
 											</div><!-- /control-group -->
 										</div><!-- /span6 -->
 									</div><!-- /row-fluid -->
+
+									
 									
 									<div class="row-fluid">
 										<div class="span6">
 											<div class="control-group">
-												<label for="phone" class="control-label">Phone Number:</label>
+												<%= f.label :name,class: "control-label"%>
 												<div class="controls">
-													<input class="span12" type="tel" name="contact_phone" id="phone">  
+												<%= f.text_field :name,class:"span12"%>
 												</div><!-- /controls -->
 											</div><!-- /control-group -->
 										</div><!-- /span6 -->
-											<div class="span6">
-												<div class="control-group">
-												<label for="website" class="control-label">Your Website:</label>
+										
+									</div><!-- /row-fluid -->
+									
+									<div class="row-fluid">
+										<div class="span6">
+											<div class="control-group">												
+												<%= f.label :phone_number,class: "control-label"%>
 												<div class="controls">
-													<input class="span12" type="url" name="contact_website" id="website">
+												<%= f.text_field :phone_number,class:"span12"%>
+												</div><!-- /controls -->
+											</div><!-- /control-group -->
+										</div><!-- /span6 -->
+										
+									</div><!-- /row-fluid -->
+
+									<div class="row-fluid">
+										<div class="span6">
+											<div class="control-group">
+												<%= f.label :email,class: "control-label"%>
+												<div class="controls">
+													<%= f.text_field :email,class:"span12"%>
 												</div><!-- /controls -->
 											</div><!-- /control-group -->
 										</div><!-- /span6 -->
@@ -603,20 +645,16 @@
 									<div class="row-fluid">
 										<div class="span12">
 											<div class="control-group">
-												<label for="message" class="control-label">Your Message:</label>
+												<%= f.label :comment,class: "control-label"%>
 												<div class="controls">
-													<textarea class="span12" type="text" name="contact_message" id="message" rows="4"></textarea>
+													<%= f.text_area :comment,class:"span12",cols: 50, rows: 7%>
 												</div><!-- /controls -->
 											</div><!-- /control-group -->
 										</div><!-- /span12 -->
 									</div><!-- /row-fluid -->
 									
-					                <input type="hidden" name="save" value="contact">  
-									<button type="submit" class="btn-inverse pull-right">
-										Send <span>Message</span>
-										<i class="icon-circle-arrow-right"></i>
-									</button>
-							</form><!-- /form -->
+					        <%= f.submit "Sign Up",class: "btn-inverse pull-right" %>
+							<% end %>
 						</div><!-- /span8 -->	
 						
 						<div id="footer">

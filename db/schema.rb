@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217210956) do
+ActiveRecord::Schema.define(version: 20131222191610) do
+
+  create_table "applicant_courses", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "applicant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applicant_courses", ["applicant_id"], name: "index_applicant_courses_on_applicant_id"
+  add_index "applicant_courses", ["course_id"], name: "index_applicant_courses_on_course_id"
 
   create_table "applicants", force: true do |t|
     t.string   "email"
@@ -19,6 +29,20 @@ ActiveRecord::Schema.define(version: 20131217210956) do
     t.string   "slug"
     t.integer  "phone_number"
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "course_id"
+    t.integer  "r_class_payment"
+    t.integer  "python_class_payment"
+    t.boolean  "r_session"
+    t.boolean  "python_session"
+    t.integer  "total_paid"
+  end
+
+  add_index "applicants", ["course_id"], name: "index_applicants_on_course_id"
+
+  create_table "courses", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
