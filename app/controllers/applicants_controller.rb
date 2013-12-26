@@ -24,17 +24,16 @@ class ApplicantsController < ApplicationController
   # POST /applicants
   # POST /applicants.json
   def create
-    @applicant = Applicant.new(applicant_params)
-
-    respond_to do |format|
-      if @applicant.save
-        format.html { redirect_to @applicant, notice: 'Applicant was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @applicant }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @applicant.errors, status: :unprocessable_entity }
-      end
+    @applicant = Applicant.create(applicant_params)
+    if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
+      @applicant_course = ApplicantCourses.create(course_id: 1, r_class_payment: params["applicant_courses"]["r_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
+      @applicant_course = ApplicantCourses.create(course_id: 2, python_class_payment: params["applicant_courses"]["python_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
+    elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
+      @applicant_course = ApplicantCourses.create(course_id: 1, r_class_payment: params["applicant_courses"]["r_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
+    else
+      @applicant_course = ApplicantCourses.create(course_id: 2, python_class_payment: params["applicant_courses"]["python_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
     end
+    redirect_to action: 'index'
   end
 
   # PATCH/PUT /applicants/1
@@ -69,6 +68,10 @@ class ApplicantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def applicant_params
-      params.require(:applicant).permit(:email, :name, :slug, :phone_number, :comment)
+      params.require(:applicant).permit(:email, :name, :slug, :phone_number)
+    end
+
+    def applicant_course_params
+      params.require(:applicant_courses).permit(:comment,:r_class_payment, :python_class_payment)
     end
 end

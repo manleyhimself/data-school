@@ -88,3 +88,71 @@ $(document).ready(function() {
     });
 });
 
+
+$(document).ready(function() {
+    $(document).on("click","#r-class", function() {
+        if ($('select[name="applicant_courses[r_class_payment]"]').is(':enabled')){
+            $('select[name="applicant_courses[r_class_payment]"]').prop('disabled',true);
+            $('.r-select').append($('<option>', { 
+                value: 0,
+                text: "-" 
+            }));
+            $(".r-select").val(0);
+        }
+        else{
+            $('select[name="applicant_courses[r_class_payment]"]').prop('disabled',false);
+            $(".r-select option[value=0]").remove();
+            $(".r-select").val("1100");
+        }  
+    });
+});
+
+$(document).ready(function() {
+    $(document).on("click","#python-class", function() {
+        if ($('select[name="applicant_courses[python_class_payment]"]').is(':enabled')){
+            $('select[name="applicant_courses[python_class_payment]"]').prop('disabled',true);
+            $('.python-select').append($('<option>', { 
+                value: 0,
+                text: "-" 
+            }));
+            $(".python-select").val(0);
+        }
+        else{
+            $('select[name="applicant_courses[python_class_payment]"]').prop('disabled',false);
+            $(".python-select option[value=0]").remove();
+            $(".python-select").val("550");
+
+        }  
+    });
+});
+
+
+
+
+$(document).ready(function() {
+    $(".form_button").click(function(){
+
+    var $form = $($(".app_form").last());
+
+    var valuesToSubmit = $($form).serialize();
+
+    $.post($($form).attr('action'), valuesToSubmit);
+
+    var $form = $($(".app_course_form").last());
+
+    var valuesToSubmit = $($form).serialize();
+
+    $.post($($form).attr('action'), valuesToSubmit).done(function(){
+
+      var pathName = window.location.pathname;
+      $("#form-div").load(pathName + " #form-div");
+    });
+  });
+});
+
+
+
+
+
+
+

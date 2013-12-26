@@ -1,34 +1,689 @@
-<h1>Listing applicants</h1>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>NYC Data Science Academy</title>
+  	<%= javascript_include_tag "application" %>
+		<meta name="description" content="">
+		<meta name="author" content="" >
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+		<link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet" media="screen">
+		
+		<!--[if IE 7]>
+			<link href="css/font-awesome-ie7.min.css" rel="stylesheet">
+		<![endif]-->
+	
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/modernizr.js"></script>
+	
+	</head>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Slug</th>
-      <th>Phone number</th>
-      <th>Comment</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @applicants.each do |applicant| %>
-      <tr>
-        <td><%= applicant.email %></td>
-        <td><%= applicant.name %></td>
-        <td><%= applicant.slug %></td>
-        <td><%= applicant.phone_number %></td>
-        <td><%= applicant.comment %></td>
-        <td><%= link_to 'Show', applicant %></td>
-        <td><%= link_to 'Edit', edit_applicant_path(applicant) %></td>
-        <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<body>
+		<div id="wrapper">
+			<div id="sidebar">
+				<a class="btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<!-- <div id="logo"> <a href="/"><img src="img/logo.svg" alt="logo" /></a> </div> -->
+				<nav id="nav" class="navigation" role="navigation">
+					<ul class="unstyled">
+						<li class="active" data-section="1"><i class="icon-home"></i> <span>Home</span></li>
+						<li data-section="2" class=""><i class="icon-laptop"></i> <span>About</span></li>
+						<li data-section="3" class=""><i class="icon-user"></i> <span>The Team</span></li>
+						<li data-section="4" class=""><i class="icon-pencil"></i> <span>Classes</span></li>
+						<li data-section="5" class=""><i class="icon-money"></i> <span>Tuition</span></li>
+						<li data-section="6" class="last"><i class="icon-envelope"></i> <span>Sign Up</span></li>
+					</ul>
+				</nav><!-- /nav -->
+			</div><!-- /sidebar -->
+			
+			<div id="container">
+										
+				<section class="section" id="section1" data-section="1">
+					<div class="container-fluid">	
+						<div class="row-fluid">
+							
+							<div class="alt-image img-circle thumb">
+								<img src="img/thumb.jpg" alt="Your Name" class="img-circle">
+							</div>
+							<div class="span6 intro" id="greeting">
+								<hgroup>
+									<h1>NYC Data Science Academy</h1>
+									<h3>Data is power.</h3>
+								</hgroup>
+								<button class="btn-inverse" data-section="2">
+									Who Are <span>We?</span>
+									<i class="icon-circle-arrow-down"></i>
+								</button>
+							</div><!-- /span6 -->
+							
+						</div><!-- /row-fluid -->
+					</div><!-- /container-fluid -->	
+				</section><!-- /section -->
+								
+				<section class="section" id="section2" data-section="2">
+					<div class="container-fluid">
+						<div class="row-fluid title">
+							<div class="span3">
+								<h2>About</h2>
+							</div><!-- /span3 -->
+							<div class="span9 hidden-phone">	
+								<hr>
+							</div><!-- /span9 -->
+						</div><!-- /row-fluid -->
+						
+						<div class="row-fluid desc">
+							<div class="span8">
+								<p>NYC Data Science Academy is a program designed to teach those who wish to learn.</p>
+								<p>Through hands-on projects and real-world applications, our students develop the skills they will need to pursue data science as both a hobby and profession. We also organize the <a id="meetup" href="http://www.meetup.com/NYC-Open-Data/" target="_blank">NYC Open Data Meetup</a>, which means that by enrolling at the Academy you will be joining a vast network of support and active collaboration.</p>
+								<p>Whether you have a passion for data that borders on inappropriate, or you just have a tickle of curiousity, we encourage you to follow this intrigue and enroll. The world needs more people like you. </p>
+							</div><!-- /span8 -->
+						</div><!-- /row-fluid -->
+						
+								
+				</section><!-- /section -->	
 
-<br>
+				
+				<section class="section" id="section3" data-section="3">
+					<div class="container-fluid">
+						<div class="row-fluid title">
+							<div class="span4">
+								<h2>The Team</h2>
+							</div><!-- /span4 -->
+							<div class="span8 hidden-phone alt">	
+								<hr>
+							</div><!-- /span8 -->
+						</div>
+						<div class="row-fluid desc">
+							<div class="span8">
+								<p id="viv-bio">Hey, I'm Vivian and I currently run a statistical consulting firm. I am also the organizer for the <a id="underline" href="http://www.meetup.com/NYC-Open-Data/" target="_blank">NYC Open Data Meetup</a> and the New York R user group. <br> (CTO @Supstat Inc, Master degrees in Computer Science and Statistics)</p>
+								<p id="scott-bio">I study Economics (Development and Econometrics) and am a developer of LyX. Analyzing data is my thing. <br> (Data Scientist @ Supstat Inc, 5th year Econ PhD at Princeton Univ.)</p>
+								<p id="man-bio">I love Wikipedia. <br> I love data. <br>I love NY.</p>
+							</div><!-- /span8 -->
+						</div><!-- /row -->
+						
+						<div class="row-fluid content slide">
+							<div class="span4">
+								<img src="img/project01.png" alt="Project 01" id="viv-image">
+								<h6 class="hidden-phone">Vivian Zhang - Instructor</h6>
+							</div><!-- /span4 -->
+							<div class="span4">
+								<img src="img/project02.png" alt="Project 02" id="scott-image">
+								<h6 class="hidden-phone">Scott Kostyshak - Instructor</h6>
+							</div><!-- /span4 -->
+							<div class="span4">
+								<img src="img/project03.png" alt="Project 03" id="man-image">
+								<h6 class="hidden-phone">Manley - Operations</h6>
+							</div><!-- /span4 -->
+						</div><!-- /row-fluid -->	
+	
+					</div><!-- /container -->
+				</section><!-- /section -->
+				
+				
+				
+				<section class="section" id="section4" data-section="4">
+					<div class="container-fluid">
+						<div class="row-fluid title">
+							<div class="span4">
+								<h2>Classes</h2>
+							</div><!-- /span4 -->
+							<div class="span8 hidden-phone">	
+								<hr>
+							</div><!-- /span8 -->
+						</div><!-- /row-fluid -->
+						<div class="row-fluid desc">
+							<div class="span8">
+								<p>We have two upcoming classes: </p>
+								<h3 id="r-header">Data Science: Programming in R (for beginners) </h3>
+								<p>-<strong>Dates:</strong> Feb 1st, 8th, 15th, 22nd, and Mar 1st of 2014 (five consecutive Saturdays)
+								<p>-<strong>Time:</strong> 10:00 - 17:00 (4.5 hours of lectures, 1.5 hours hands-on, 1 hour break)
+								<p>-<strong>Location:</strong> pending
+								<br>
+								<br>
+								<h3 id="python-header">Data Science: Python and Pandas (for beginners) </h3>
+								<p>-<strong>Dates:</strong> Feb 2nd, 9th, 16th, 23rd, and Mar 2nd of 2014 (five consecutive Sundays)
+								<p>-<strong>Time:</strong> 12:00 - 16:00
+								<p>-<strong>Location:</strong> pending
 
-<%= link_to 'New Applicant', new_applicant_path %>
+							</div><!-- /span8 -->
+						</div><!-- /row-fluid -->
+						<div class="row-fluid content" id="r-info">
+							<div class="span4">
+								<ul class="article-tags">
+									<li data-blog="blog" class="current"><i class="icon-circle-arrow-right"></i>Basics: 6 hrs </li>
+									<li data-blog="dribbble"><i class="icon-circle-arrow-right"></i>Getting Data: 6 hrs </li>
+									<li data-blog="instagram"><i class="icon-circle-arrow-right"></i>Data Manipulation: 6 hrs </li>
+									<li data-blog="cats" ><i class="icon-circle-arrow-right"></i>Data Visualization: 6 hrs</li>
+									<li data-blog="dogs"><i class="icon-circle-arrow-right"></i>Elem. Statistical Methods: 6 hrs </li>
+									<li data-blog="aliens"><i class="icon-circle-arrow-right"></i>Prelim. Data Mining: remainder</li>
+						      
+						            
+					            </ul>
+							</div><!-- /span4 -->
+							
+							<div class="span8 slide current" data-blog="blog">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Abstract</h4>
+										<p> Overview of what we will be studying over the duration of the course. Students will learn the characteristics of R, resource acquisition mode, and basic programming concepts.<br>
+										Case and Exercise: Project Euler in R</p>
+									
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Concepts</h4>
+										<ul>
+											<li> How to learn R </li> 
+											<li> How to get help </li>
+											<li> R language resources and books</li> 
+											<li> RStudio</li>
+											<li> Expansion Pack </li>
+											<li> Workspace </li>
+											<li> Custom Startup Items</li> 
+											<li> Batch Mode</li> 
+											<li> Data Objects</li> 
+											<li> Custom Functions</li> 
+											<li> Control Statements</li> 
+											<li> Vectorized Operations</li>
+										</ul>	
+										
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="dribbble" >
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Abstract</h4>
+										<p> We will discuss the various ways in which the R language reads data, the technologies involved in the WEB concept of crawling, interacting with a database via sql statements, and calling data from a variety of local excel files. <br>
+										Case and Exercise: crawl watercress data/write a custom function </p>
+									
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Concepts</h4>
+										<ul>
+											<li> Web data capture </li> 
+											<li> API data source  </li>
+											<li> Connecting to a database</li> 
+											<li> Local Documentation </li>
+											<li> Other data sources </li>
+											<li> Data Export </li>
+										</ul>	
+										
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="instagram">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Abstract</h4>
+										<p> Manipulating data with R for various types of data conversion, especially for string operation processing. <br>
+										Case and Exercise: Find the QQ group (the most used instant messager tool), then discuss research options with text features
+									
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Concepts</h4>
+										<ul>
+											<li> Data Sorting</li> 
+											<li> Merging Data  </li>
+											<li> Summarizing Data </li> 
+											<li> Remodeling Data </li>
+											<li> Takings a Subset of Data  </li>
+											<li> String Manipulation</li>
+											<li> Date Actions</li> 
+										</ul>	
+										
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							<div class="span8 slide " data-blog="cats">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Abstract</h4>
+										<p> Advanced drawing packages: lattice and ggplot2. We will also cover the various methods of visualization to explore.<br>
+										Case and Exercise: ?
+									
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Concepts</h4>
+										<ul>
+											
+											<li> Histogram </li> 
+											<li> Point </li>
+											<li> Column</li> 
+											<li> Line</li>
+											<li> Pie </li>
+											<li> Box Plot </li>
+											<li> Scatter</li> 
+											<li> Matrix Related</li> 
+											<li> Map</li> 
+										</ul>	
+										
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="dogs" >
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Abstract</h4>
+										<p> How to use R for statistical analysis and regression analysis. Students will master basic statistical significance and role model. <br>
+										Case and Exercise: Using regression to predict commodity prices; simulated casino game winner</p>
+									
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Concepts</h4>
+										<ul>
+											<li> Descriptive Statistics </li>
+											<li> Statistical Distributions</li> 
+											<li> Frequency and Contingency Tables </li>
+											<li> Correlation </li>
+											<li> T test</li> 
+											<li> Non-parametric Statistics </li>
+											<li> Linear Regression </li>
+											<li> Regression Diagnostics</li> 
+											<li> Robust Regression </li>
+											<li> Nonlinear regression </li>
+											<li> Principal Component Analysis</li> 
+											<li> Logistic Regression </li>
+											<li> Statistical Simulation</li>
+											
+										</ul>	
+										
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="aliens">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Abstract</h4>
+										<p> The R language for data mining expansion pack. Two new mining methods will be introduced. <br>
+										Case and Exercise: Use R to participate in Kaggle Data Mining Competition </p>
+									
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Concepts</h4>
+										<ul>
+											<li>General Mining Process</li> 
+											<li>Rattle Bag </li>
+											<li>Hierarchical Clustering</li> 
+											<li>K -means Clustering</li> 
+											<li>Decision Trees </li>
+											<li>BP Neural Network</li>
+										</ul>	
+										
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+						
+					</div><!-- /container -->
+					<div class="row-fluid content" id="python-info">
+							<div class="span4">
+								<ul class="article-tags">
+									<li data-blog="blog" class="current"><i class="icon-circle-arrow-right"></i>Python</li>
+									<li data-blog="dribbble"><i class="icon-circle-arrow-right"></i>Python</li>
+									<li data-blog="instagram"><i class="icon-circle-arrow-right"></i>Python</li>
+									<li data-blog="lions"><i class="icon-circle-arrow-right"></i>Python</li>
+									<li data-blog="tigers"><i class="icon-circle-arrow-right"></i>Python</li>
+									<li data-blog="bears"><i class="icon-circle-arrow-right"></i>Python</li>
+						      
+						            
+					            </ul>
+							</div><!-- /span4 -->
+							
+							<div class="span8 slide current" data-blog="blog">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Blog Python 1</h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Blog Python 2</h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="dribbble">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Shot Python 01</h4>
+										<p style="text-align:center"><img src="img/d01.png" alt=""></p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Shot Python 02</h4>
+										<p style="text-align:center"><img src="img/d02.png" alt=""></p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="instagram">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Marcel Python</h4>
+										<p style="text-align:center"><img src="img/i01.jpg" alt=""></p>
+										<div class="pull-right read-more">
+											Read More <i class="icon-double-angle-right"></i>
+										</div>
+									</div><!-- /span6 -->
+									
+									<div class="span6 visible-desktop">
+										<h4>Python The Boss</h4>
+										<p style="text-align:center"><img src="img/i02.jpg" alt=""></p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							<div class="span8 slide " data-blog="lions">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Blog Python 1</h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Blog Python 2</h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+									
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="tigers">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Shot Python 01</h4>
+										<p style="text-align:center"><img src="img/d01.png" alt=""></p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+									<div class="span6 visible-desktop">
+										<h4>Shot Python 02</h4>
+										<p style="text-align:center"><img src="img/d02.png" alt=""></p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+							<div class="span8 slide" data-blog="bears">
+								<div class="row-fluid">
+									<div class="span6 expand">
+										<h4>Marcel Python</h4>
+										<p style="text-align:center"><img src="img/i01.jpg" alt=""></p>
+										<div class="pull-right read-more">
+											Read More <i class="icon-double-angle-right"></i>
+										</div>
+									</div><!-- /span6 -->
+									
+									<div class="span6 visible-desktop">
+										<h4>Python The ROAR</h4>
+										<p style="text-align:center"><img src="img/i02.jpg" alt=""></p>
+										<div class="pull-right read-more">
+											<a href="#"  rel="external">Read More <i class="icon-double-angle-right"></i></a>
+										</div>
+									</div><!-- /span6 -->
+								</div><!-- /row-fluid -->
+							</div><!-- /span8 -->
+							
+						
+					</div><!-- /container -->
+				</section><!-- /section -->
+				
+				<section class="section" id="section5" data-section="5">
+					<div class="container-fluid">
+					
+						<div class="row-fluid title">
+							<div class="span4">
+								<h2>Tuition</h2>
+							</div><!-- /span4 -->
+							<div class="span8 hidden-phone">
+								<hr>
+							</div><!-- /span8 -->
+						</div><!-- /row-fluid -->
+						
+						<div class="row-fluid">
+							<br>
+							<br>
+						</div><!-- /row-fluid -->
+						
+						<div class="row-fluid">
+							<div class="span12">
+					            <div class="pricing-table-wrapper">
+					                <div class="pricing-table row-fluid">
+					                
+					                	<!-- FIRST TABLE -->
+					                    <ul class="pricing-column span4">
+					                        <li class="pricing-title">Programming in R</li>
+					                        
+					                        <li class="pricing-price">$1,100 <span>/course</span></li>
+					                        <li class="pricing-price">$250 <span>/class</span></li>
+					                        <li class="pricing-price"><span>10% tuition reduction for Veterans</span></li>
+
+					                        
+					                       
+					                    </ul>
+					                    
+					                    
+					                    
+					                    <!-- SECOND TABLE -->
+					                    <ul class="pricing-column span4">
+					                        <li class="pricing-title">Python and Pandas</li>
+					                        
+					                        <li class="pricing-price">$550 <span>/course</span></li>
+					                        <li class="pricing-price">$120 <span>/class</span></li>
+					                        <li class="pricing-price"><span>10% tuition reduction for Veterans</span></li>
+
+
+					                        
+					                    </ul>
+					                </div><!-- /pricing-table-wraper -->
+					            </div><!-- /pricing-table -->
+							
+							</div><!-- /span12 -->
+						</div><!-- /row-fluid -->
+					</div><!-- /container-fluid -->
+				</section><!-- /section -->
+				
+				<section class="section" id="section6" data-section="6">
+					<div class="container-fluid">
+						<div class="row-fluid title">
+							<div class="span4">
+								<h2>Sign Up</h2>
+							</div><!-- /span4 -->
+							<div class="span8 hidden-phone alt">	
+								<hr>
+							</div><!-- /span8 -->
+						</div><!-- /row-fluid -->
+						<div class="row-fluid content">
+							<div class="span4">
+								<h4 class="intro">Drop me a Line!</h4>
+								<p>Enough about me, let s hear about you. I am currently available for projects starting in July 2013.</p>
+								<div class="row-fluid alt">
+									<h5>Email:</h5>
+									<span>hello@yourdomain.com</span>
+								</div><!-- /row -->
+								<div class="row-fluid alt">
+									<h5>Phone:</h5>
+									<span>(+34) 123-4567</span>
+								</div><!-- /row -->
+								<div class="row-fluid alt">
+									<h5>Twitter:</h5>
+									<span><a href="http://www.twitter.com/basicoh_" rel="external">@Basicoh_</a></span>
+								</div><!-- /row -->
+								
+								<div class="row-fluid alt">
+								</div><!-- /row -->
+
+								<div class="row-fluid alt">
+
+									<h4 class="intro">Total Cost of Tuition</h4>
+
+								</div><!-- /row -->
+								<div class="row-fluid alt">
+
+													<p> $555 </p>
+
+								</div><!-- /row -->
+ 								<button class="btn-inverse form_button">
+									Sign <span>Up</span>
+									<i class="icon-circle-arrow-right"></i>
+								</button>
+							</div><!-- /span4 -->
+							 
+							
+						<div class="span8" id="form-div">
+							
+								<div class="row-fluid">
+									<div class="span12">
+									</div><!-- /span12 -->
+								</div><!-- /row-fluid -->
+								
+								<%= form_for ApplicantCourses.new, html: {class: "app_course_form"}, url: { controller: "applicants", action: "create"}  do |f| %>
+										<%= form_for Applicant.new, html: {class: "app_form"}, url: {action: "create"} do |fa| %>
+										
+										
+										<div class="row-fluid">
+											<div class="span6">
+												<div class="control-group">
+														<div class="checkbox" id="r-checkbox">
+															<%= check_box_tag "course_id[r-class]", 1, check=true, id: 'r-class'%>
+															R Class
+														</div>
+														<br>
+														<%= f.label :r_class_payment, "Classes Attending",class: "control-label"%>
+													<div class="controls">
+														<%= f.select :r_class_payment, options_for_select([["Session", 1100], ["4", 1000], ["3", 750], ["2", 500], ["1", 250]], 1100), {}, class: "r-select"%>
+													</div><!-- /controls -->
+												</div><!-- /control-group -->
+											</div><!-- /span6 -->
+											<div class="span6">
+												<div class="control-group">
+													<div class="checkbox" id="python-checkbox">
+															<%= check_box_tag "course_id[python-class]", 2, check=true, id: 'python-class'%>
+															Python Class
+													</div>
+														<br>
+														<%= f.label :python_class_payment, "Classes Attending",class: "control-label"%>
+													<div class="controls">
+														<%= f.select :python_class_payment, options_for_select([["Session", 550], ["4", 480], ["3", 360], ["2", 240], ["1", 120]], 550), {}, class:"python-select"%>
+													</div><!-- /controls -->
+												</div><!-- /control-group -->
+											</div><!-- /span6 -->
+										</div><!-- /row-fluid -->
+
+										
+										
+										<div class="row-fluid">
+											<div class="span6">
+												<div class="control-group">
+													<%= fa.label :name,class: "control-label"%>
+													<div class="controls">
+													<%= fa.text_field :name,class:"span12"%>
+													</div><!-- /controls -->
+												</div><!-- /control-group -->
+											</div><!-- /span6 -->
+											
+										</div><!-- /row-fluid -->
+										
+										<div class="row-fluid">
+											<div class="span6">
+												<div class="control-group">												
+													<%= fa.label :phone_number,class: "control-label"%>
+													<div class="controls">
+													<%= fa.text_field :phone_number,class:"span12"%>
+													</div><!-- /controls -->
+												</div><!-- /control-group -->
+											</div><!-- /span6 -->
+											
+										</div><!-- /row-fluid -->
+
+										<div class="row-fluid">
+											<div class="span6">
+												<div class="control-group">
+													<%= fa.label :email,class: "control-label"%>
+													<div class="controls">
+														<%= fa.text_field :email,class:"span12"%>
+													</div><!-- /controls -->
+												</div><!-- /control-group -->
+											</div><!-- /span6 -->
+										</div><!-- /row-fluid -->
+										
+										<div class="row-fluid">
+											<div class="span12">
+												<div class="control-group">
+													<%= f.label :comment,class: "control-label"%>
+													<div class="controls">
+														<%= f.text_area :comment,class:"span12",cols: 50, rows: 7%>
+													</div><!-- /controls -->
+												</div><!-- /control-group -->
+											</div><!-- /span12 -->
+										</div><!-- /row-fluid -->
+
+								<% end %>
+							<% end %>
+						</div><!-- /span8 -->	
+						<div id="footer">
+							<div class="row-fluid">
+								<div class="span12">
+									
+								</div><!-- /span12 -->
+							</div><!-- /row-fluid -->	
+						</div><!-- /footer -->
+					</div><!-- /row-fluid -->	
+				</div><!-- /container-fluid -->
+				
+			</div><!-- /container -->	
+		</div><!-- /wrapper -->	
+
+	
+		<!-- JAVASCRIPTS -->
+		<script type="text/javascript" src="js/waypoints.min.js"></script>
+		<script type="text/javascript" src="js/jquery.knob.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
+
+
