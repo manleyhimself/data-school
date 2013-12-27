@@ -98,11 +98,15 @@ $(document).ready(function() {
                 text: "-" 
             }));
             $(".r-select").val(0);
+            var value = $(".python-select").val();
+            $("#total-tuition h3").text('$'+value);
         }
         else{
             $('select[name="applicant_courses[r_class_payment]"]').prop('disabled',false);
             $(".r-select option[value=0]").remove();
             $(".r-select").val("1100");
+            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
+            $("#total-tuition h3").text('$'+value);
         }  
     });
 });
@@ -116,12 +120,15 @@ $(document).ready(function() {
                 text: "-" 
             }));
             $(".python-select").val(0);
+            var value = $(".r-select").val();
+            $("#total-tuition h3").text('$'+value);
         }
         else{
             $('select[name="applicant_courses[python_class_payment]"]').prop('disabled',false);
             $(".python-select option[value=0]").remove();
             $(".python-select").val("550");
-
+            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
+            $("#total-tuition h3").text('$'+value);
         }  
     });
 });
@@ -144,11 +151,38 @@ $(document).ready(function() {
 
     $.post($($form).attr('action'), valuesToSubmit).done(function(){
 
-      var pathName = window.location.pathname;
-      $("#form-div").load(pathName + " #form-div");
+      $( '.app_form' ).each(function(){
+            this.reset();
+        });
+      $( '.app_course_form' ).each(function(){
+            this.reset();
+        });
+      $(".r-select").val(1100);
+      $(".python-select").val(550);
+      if ($('select[name="applicant_courses[r_class_payment]"]').is(':disabled')){
+            $('select[name="applicant_courses[r_class_payment]"]').prop('disabled',false);
+            $(".r-select option[value=0]").remove();
+            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
+            $("#total-tuition h3").text('$'+value);
+        }else if($('select[name="applicant_courses[python_class_payment]"]').is(':disabled')){
+            $('select[name="applicant_courses[python_class_payment]"]').prop('disabled',false);
+            $(".python-select option[value=0]").remove();
+            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
+            $("#total-tuition h3").text('$'+value);
+        }
     });
   });
 });
+
+$(document).ready(function() {
+    var selects = $('.select-form');
+    $(document).on('change', selects, function() {
+    var value = 0;
+    selects.each(function(){ value += +this.value; });
+        $("#total-tuition h3").text('$'+value);
+    }).trigger('change');
+});
+
 
 
 

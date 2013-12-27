@@ -560,9 +560,9 @@
 									<h4 class="intro">Total Cost of Tuition</h4>
 
 								</div><!-- /row -->
-								<div class="row-fluid alt">
+								<div class="row-fluid alt" id="total-tuition">
 
-													<p> $555 </p>
+													<h3></h3>
 
 								</div><!-- /row -->
  								<button class="btn-inverse form_button">
@@ -593,7 +593,7 @@
 														<br>
 														<%= f.label :r_class_payment, "Classes Attending",class: "control-label"%>
 													<div class="controls">
-														<%= f.select :r_class_payment, options_for_select([["Session", 1100], ["4", 1000], ["3", 750], ["2", 500], ["1", 250]], 1100), {}, class: "r-select"%>
+														<%= f.select :r_class_payment, options_for_select([["Session", 1100], ["4", 1000], ["3", 750], ["2", 500], ["1", 250]], 1100), {}, class: "r-select select-form"%>
 													</div><!-- /controls -->
 												</div><!-- /control-group -->
 											</div><!-- /span6 -->
@@ -606,7 +606,7 @@
 														<br>
 														<%= f.label :python_class_payment, "Classes Attending",class: "control-label"%>
 													<div class="controls">
-														<%= f.select :python_class_payment, options_for_select([["Session", 550], ["4", 480], ["3", 360], ["2", 240], ["1", 120]], 550), {}, class:"python-select"%>
+														<%= f.select :python_class_payment, options_for_select([["Session", 550], ["4", 480], ["3", 360], ["2", 240], ["1", 120]], 550), {}, class:"python-select select-form"%>
 													</div><!-- /controls -->
 												</div><!-- /control-group -->
 											</div><!-- /span6 -->
