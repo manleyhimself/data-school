@@ -22,7 +22,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem "therubyracer"
 # http://stackoverflow.com/questions/15352901/rails-4-app-on-heroku-works-but-errors-in-log
 
-
+gem "jquery-validation-rails"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

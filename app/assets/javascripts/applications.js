@@ -170,6 +170,10 @@ $(document).ready(function() {
             var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
             $("#total-tuition h3").text('$'+value);
         }
+        else {
+            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
+            $("#total-tuition h3").text('$'+value);
+        }
     });
   });
 });
