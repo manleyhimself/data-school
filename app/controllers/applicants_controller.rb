@@ -26,12 +26,12 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.create(applicant_params)
     if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
-      @applicant_course = ApplicantCourses.create(course_id: 1, r_class_payment: params["applicant_courses"]["r_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
-      @applicant_course = ApplicantCourses.create(course_id: 2, python_class_payment: params["applicant_courses"]["python_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
+      @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
+      @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
     elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
-      @applicant_course = ApplicantCourses.create(course_id: 1, r_class_payment: params["applicant_courses"]["r_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
+      @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
     else
-      @applicant_course = ApplicantCourses.create(course_id: 2, python_class_payment: params["applicant_courses"]["python_class_payment"], comment: params["applicant_courses"]["comment"], applicant_id: @applicant.id)
+      @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
     end
     redirect_to action: 'index'
   end
@@ -72,6 +72,6 @@ class ApplicantsController < ApplicationController
     end
 
     def applicant_course_params
-      params.require(:applicant_courses).permit(:comment,:r_class_payment, :python_class_payment)
+      params.require(:applicant_course).permit(:comment,:r_class_payment, :python_class_payment)
     end
 end

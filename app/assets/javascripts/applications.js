@@ -133,7 +133,74 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function () {
 
+    $('.app_course_form').validate({
+        rules: {
+            "applicant[email]": {
+                required: true,
+                email: true
+            },
+            "applicant[name]": {
+                required: true,
+                minlength: 3
+            },
+            "applicant[phone_number]": {
+                required: true,
+                phoneUS: true
+            },
+            "course_id[r-class]": {
+                required: function(element) {
+                    return !($("#python-class").is(':checked'));
+                }
+            },
+            "course_id[python-class]": {
+                required: function(element) {
+                    return !($("#r-class").is(':checked'));
+                }
+            }
+        },
+        messages: {
+            "course_id[r-class]": {
+                required: "Please choose one class to attend."
+            },
+            "course_id[python-class]": {
+                  required: "Please choose one class to attend."
+            }
+        }
+    });
+
+    // programmatically check any element using the `.valid()` method.
+    $('#applicant_phone_number').on('blur', function () {
+        $('input[name="applicant[phone_number]"]').valid();
+    });
+    $('#applicant_name').on('blur', function () {
+        $('input[name="applicant[name]"]').valid();
+    });
+    $('#applicant_email').on('blur', function () {
+        $('input[name="applicant[email]"]').valid();
+    });
+    $('#r-class').on('click', function () {
+        $('input[name="course_id[r-class]"]').valid();
+        $('input[name="course_id[python-class]"]').valid();
+
+    });
+    $('#python-class').on('click', function () {
+        $('input[name="course_id[r-class]"]').valid();
+        $('input[name="course_id[python-class]"]').valid();
+    });
+    $('.app_course_form').bind('change keyup', function() {
+    if($(this).validate().checkForm()) {
+        $('.form_button').removeClass('button_disabled').attr('disabled', false);
+        $("#form-instruct").hide(); 
+    } else {
+        $('.form_button').addClass('button_disabled').attr('disabled', true);
+        $("#form-instruct").show(); 
+    }
+});
+
+
+});
 
 
 $(document).ready(function() {
@@ -174,6 +241,8 @@ $(document).ready(function() {
             var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
             $("#total-tuition h3").text('$'+value);
         }
+        $('.form_button').addClass('button_disabled').attr('disabled', true);
+        $("#form-instruct").show(); 
     });
   });
 });
@@ -186,6 +255,10 @@ $(document).ready(function() {
         $("#total-tuition h3").text('$'+value);
     }).trigger('change');
 });
+
+
+
+
 
 
 

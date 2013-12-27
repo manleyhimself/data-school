@@ -22,8 +22,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem "therubyracer"
 # http://stackoverflow.com/questions/15352901/rails-4-app-on-heroku-works-but-errors-in-log
 
-gem "jquery-validation-rails"
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -32,6 +30,8 @@ gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+gem "paypal-express", "~> 0.5.5"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
