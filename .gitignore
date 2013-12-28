@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 
-stripe.rb
+stripe_secrets.rb
+secret_soup.rb

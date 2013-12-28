@@ -185,22 +185,23 @@ $(document).ready(function () {
         $('input[name="course_id[python-class]"]').valid();
 
     });
-    $('#python-class').on('click', function () {
-        $('input[name="course_id[r-class]"]').valid();
-        $('input[name="course_id[python-class]"]').valid();
+        $('#python-class').on('click', function () {
+            $('input[name="course_id[r-class]"]').valid();
+            $('input[name="course_id[python-class]"]').valid();
+        });
+        $('.app_course_form').bind('change keyup', function() {
+        if($(this).validate().checkForm()) {
+            $('.form_button').removeClass('button_disabled').attr('disabled', false);
+            $("#form-instruct").hide(); 
+        } else {
+            $('.form_button').addClass('button_disabled').attr('disabled', true);
+            $("#form-instruct").show(); 
+        }
     });
-    $('.app_course_form').bind('change keyup', function() {
-    if($(this).validate().checkForm()) {
-        $('.form_button').removeClass('button_disabled').attr('disabled', false);
-        $("#form-instruct").hide(); 
-    } else {
-        $('.form_button').addClass('button_disabled').attr('disabled', true);
-        $("#form-instruct").show(); 
-    }
 });
 
 
-});
+
 
 
 $(document).ready(function() {

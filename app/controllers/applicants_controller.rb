@@ -21,19 +21,46 @@ class ApplicantsController < ApplicationController
   def edit
   end
 
+  def create_charge
+
+    
+  end
+
   # POST /applicants
   # POST /applicants.json
   def create
-    @applicant = Applicant.create(applicant_params)
-    if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
-      @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
-      @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
-    elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
-      @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
+    @amount = if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
+        params["course_id"]["r-class"] + params["course_id"]["python-class"]
+      elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
+        params["applicant_course"]["r_class_payment"]
+      else
+        params["applicant_course"]["python_class_payment"]
+      end
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :card  => params[:stripeToken]
+    )
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to action: 'index'
     else
-      @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
-    end
-    redirect_to action: 'index'
+      @applicant = Applicant.create(name: params['applicant']['name'], phone_number: params['applicant']["phone_number"], email: params[:stripeEmail] )
+      if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
+        @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
+        @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
+      elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
+        @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
+      else
+        @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: @applicant.id)
+      end
+      redirect_to action: 'index'
   end
 
   # PATCH/PUT /applicants/1
@@ -67,8 +94,8 @@ class ApplicantsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def applicant_params
-      params.require(:applicant).permit(:email, :name, :slug, :phone_number)
+    def applicant_params 
+      params.require(:applicant).permit(:name, :slug, :phone_number)
     end
 
     def applicant_course_params

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-DataSchool::Application.config.secret_key_base = '5e23d69169496b558b8118087da19e2639937829ad47afe15b345729977bb840c01b139d90ce5dcdbe10aabaad2e3012393ddeb3a96a7c974819d58d23762f5b'
+DataSchool::Application.config.secret_key_base = ENV["SOUP"] 
