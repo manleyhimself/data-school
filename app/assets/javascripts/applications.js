@@ -206,7 +206,6 @@ $(document).ready(function () {
 
 $(document).ready(function() {
     $(".form_button").click(function(){
-        console.log("form test")
 
     var $form = $($(".app_form").last());
 
