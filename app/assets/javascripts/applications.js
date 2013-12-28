@@ -91,8 +91,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $(document).on("click","#r-class", function() {
-        if ($('select[name="applicant_courses[r_class_payment]"]').is(':enabled')){
-            $('select[name="applicant_courses[r_class_payment]"]').prop('disabled',true);
+        if ($('select[name="applicant_course[r_class_payment]"]').is(':enabled')){
+            $('select[name="applicant_course[r_class_payment]"]').prop('disabled',true);
             $('.r-select').append($('<option>', { 
                 value: 0,
                 text: "-" 
@@ -102,7 +102,7 @@ $(document).ready(function() {
             $("#total-tuition h3").text('$'+value);
         }
         else{
-            $('select[name="applicant_courses[r_class_payment]"]').prop('disabled',false);
+            $('select[name="applicant_course[r_class_payment]"]').prop('disabled',false);
             $(".r-select option[value=0]").remove();
             $(".r-select").val("1100");
             var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
@@ -113,8 +113,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $(document).on("click","#python-class", function() {
-        if ($('select[name="applicant_courses[python_class_payment]"]').is(':enabled')){
-            $('select[name="applicant_courses[python_class_payment]"]').prop('disabled',true);
+        if ($('select[name="applicant_course[python_class_payment]"]').is(':enabled')){
+            $('select[name="applicant_course[python_class_payment]"]').prop('disabled',true);
             $('.python-select').append($('<option>', { 
                 value: 0,
                 text: "-" 
@@ -124,7 +124,7 @@ $(document).ready(function() {
             $("#total-tuition h3").text('$'+value);
         }
         else{
-            $('select[name="applicant_courses[python_class_payment]"]').prop('disabled',false);
+            $('select[name="applicant_course[python_class_payment]"]').prop('disabled',false);
             $(".python-select option[value=0]").remove();
             $(".python-select").val("550");
             var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
@@ -226,13 +226,13 @@ $(document).ready(function() {
         });
       $(".r-select").val(1100);
       $(".python-select").val(550);
-      if ($('select[name="applicant_courses[r_class_payment]"]').is(':disabled')){
-            $('select[name="applicant_courses[r_class_payment]"]').prop('disabled',false);
+      if ($('select[name="applicant_course[r_class_payment]"]').is(':disabled')){
+            $('select[name="applicant_course[r_class_payment]"]').prop('disabled',false);
             $(".r-select option[value=0]").remove();
             var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
             $("#total-tuition h3").text('$'+value);
-        }else if($('select[name="applicant_courses[python_class_payment]"]').is(':disabled')){
-            $('select[name="applicant_courses[python_class_payment]"]').prop('disabled',false);
+        }else if($('select[name="applicant_course[python_class_payment]"]').is(':disabled')){
+            $('select[name="applicant_course[python_class_payment]"]').prop('disabled',false);
             $(".python-select option[value=0]").remove();
             var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
             $("#total-tuition h3").text('$'+value);
