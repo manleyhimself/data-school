@@ -21,11 +21,6 @@ class ApplicantsController < ApplicationController
   def edit
   end
 
-  def create_charge
-
-    
-  end
-
   # POST /applicants
   # POST /applicants.json
   def create

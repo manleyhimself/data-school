@@ -579,7 +579,7 @@
 									<div class="span12">
 									</div><!-- /span12 -->
 								</div><!-- /row-fluid -->
-								<%= form_tag url_for(:controller => 'applicants', :action => 'create_charge'), :method => 'post' do %>
+								<%= form_tag url_for(:controller => 'applicants', :action => 'create'), html: {class: "stripe_form"}, :method => 'post' do %>
 								  <article>
 								    <label class="amount">
 								      <span>Amount: $5.00</span>
@@ -649,19 +649,6 @@
 												</div><!-- /control-group -->
 											</div><!-- /span6 -->
 										</div><!-- /row-fluid -->
-
-										<div class="row-fluid">
-											<div class="span6">
-												<div class="control-group">
-													<%= fa.label :email,class: "control-label"%>
-													<div class="controls">
-														<%= fa.text_field :email,class:"span12"%>
-													</div><!-- /controls -->
-												</div><!-- /control-group -->
-											</div><!-- /span6 -->
-										</div><!-- /row-fluid -->
-
-										
 
 										<div class="row-fluid">
 											<div class="span12">
