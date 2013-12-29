@@ -47,7 +47,7 @@
 			</div><!-- /sidebar -->
 			
 			<div id="container">
-										
+			<% cache @course do %>						
 				<section class="section" id="section1" data-section="1">
 					<div class="container-fluid">	
 						<div class="row-fluid">
@@ -70,6 +70,7 @@
 									<i class="icon-circle-arrow-down"></i>
 								</button>
 							</div><!-- /span6 -->
+				<% end %>
 							
 						</div><!-- /row-fluid -->
 					</div><!-- /container-fluid -->	
@@ -259,7 +260,7 @@
 									<div class="span6 expand">
 										<h4>Abstract</h4>
 										<p> Advanced drawing packages: lattice and ggplot2. We will also cover the various methods of visualization to explore.<br>
-										Case and Exercise: ?
+										Case and Exercise: Using graphics to create intuitive and aesthetically pleasing displays of mined data
 									
 									</div><!-- /span6 -->
 									<div class="span6 visible-desktop">
@@ -542,20 +543,14 @@
 						</div><!-- /row-fluid -->
 						<div class="row-fluid content">
 							<div class="span4">
-								<h4 class="intro">Drop me a Line!</h4>
-								<p>Enough about me, let s hear about you. I am currently available for projects starting in July 2013.</p>
+								<h4 class="intro">Contact Us</h4>
+								<p>Please contact us if you are a veteran, or would like to discuss alternative payment methods.</p> <p>Moreover, if you have any further questions, please feel free to reach out.</p>
 								<div class="row-fluid alt">
 									<h5>Email:</h5>
-									<span>hello@yourdomain.com</span>
+									<br>
+									<span>vivian.stanford@gmail.com</span><br>-or-<br><span> bcmanley1@gmail.com</span>
 								</div><!-- /row -->
-								<div class="row-fluid alt">
-									<h5>Phone:</h5>
-									<span>(+34) 123-4567</span>
-								</div><!-- /row -->
-								<div class="row-fluid alt">
-									<h5>Twitter:</h5>
-									<span><a href="http://www.twitter.com/basicoh_" rel="external">@Basicoh_</a></span>
-								</div><!-- /row -->
+							
 								
 								<div class="row-fluid alt">
 								</div><!-- /row -->
@@ -589,7 +584,7 @@
 
 								  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 								          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-								          data-description="A month's subscription"
+								          data-description="NYC Data Science Academy"
 								          ></script>
 								<% end %>
 								

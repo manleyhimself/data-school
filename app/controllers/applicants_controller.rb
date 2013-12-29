@@ -1,5 +1,7 @@
 class ApplicantsController < ApplicationController
   before_action :set_applicant, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:index]
+
 
   # GET /applicants
   # GET /applicants.json
@@ -100,6 +102,10 @@ class ApplicantsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_applicant
       @applicant = Applicant.find(params[:id])
+    end
+
+    def set_course
+      @course = Course.find(1)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
