@@ -4,7 +4,7 @@ class CreateApplicants < ActiveRecord::Migration
       t.string :email
       t.string :name
       t.string :slug
-      t.integer :phone_number
+      t.column :phone_number, :bigint
 
       t.timestamps
     end
