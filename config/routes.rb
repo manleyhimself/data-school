@@ -1,4 +1,5 @@
 DataSchool::Application.routes.draw do
+  post '/applicants/create-charge', :to => 'applicants#create_charge'
   resources :applicants
   root 'applicants#index'
 

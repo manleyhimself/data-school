@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>NYC Data Science Academy</title>
-  	<%= javascript_include_tag "application" %>
+  	<%= javascript_include_tag "https://js.stripe.com/v2/", "application" %>
 		<meta name="description" content="">
 		<meta name="author" content="" >
 		<meta charset="utf-8">
@@ -55,8 +55,13 @@
 							<div class="alt-image img-circle thumb">
 								<img src="img/thumb.jpg" alt="Your Name" class="img-circle">
 							</div>
+								<%if session[:applicant] != nil %>
+								<h3 id="grats"> Congratulations! You have successfully enrolled!</h3>
+								<% end %>
+
 							<div class="span6 intro" id="greeting">
 								<hgroup>
+									<br>
 									<h1>NYC Data Science Academy</h1>
 									<h3>Data is power.</h3>
 								</hgroup>
@@ -579,10 +584,18 @@
 									<div class="span12">
 									</div><!-- /span12 -->
 								</div><!-- /row-fluid -->
+								<%= form_tag url_for(:controller => 'applicants', :action => 'create_charge'), html: {class: "stripe_form"}, :method => 'post' do %>
+								  
+
+								  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+								          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+								          data-description="A month's subscription"
+								          ></script>
+								<% end %>
 								
 								<%= form_for ApplicantCourse.new, html: {class: "app_course_form"}, url: { controller: "applicants", action: "create"}  do |f| %>
 										<%= form_for Applicant.new, html: {class: "app_form", id:"app_form_uniq"}, url: {action: "create"} do |fa| %>
-										
+
 										
 										<div class="row-fluid">
 											<div class="span6">
@@ -594,7 +607,7 @@
 														<br>
 														<%= f.label :r_class_payment, "Classes Attending",class: "control-label"%>
 													<div class="controls">
-														<%= f.select :r_class_payment, options_for_select([["Session", 1100], ["4", 1000], ["3", 750], ["2", 500], ["1", 250]], 1100), {}, class: "r-select select-form"%>
+														<%= f.select :r_class_payment, options_for_select([["Session", 1100], ["4", 1000], ["3", 750], ["2", 500], ["1", 250]], 1100), {}, class: "r-select select-form span12"%>
 													</div><!-- /controls -->
 												</div><!-- /control-group -->
 											</div><!-- /span6 -->
@@ -607,7 +620,7 @@
 														<br>
 														<%= f.label :python_class_payment, "Classes Attending",class: "control-label"%>
 													<div class="controls">
-														<%= f.select :python_class_payment, options_for_select([["Session", 550], ["4", 480], ["3", 360], ["2", 240], ["1", 120]], 550), {}, class:"python-select select-form"%>
+														<%= f.select :python_class_payment, options_for_select([["Session", 550], ["4", 480], ["3", 360], ["2", 240], ["1", 120]], 550), {}, class: "python-select select-form span12"%>
 													</div><!-- /controls -->
 												</div><!-- /control-group -->
 											</div><!-- /span6 -->
@@ -636,20 +649,8 @@
 													</div><!-- /controls -->
 												</div><!-- /control-group -->
 											</div><!-- /span6 -->
-											
 										</div><!-- /row-fluid -->
 
-										<div class="row-fluid">
-											<div class="span6">
-												<div class="control-group">
-													<%= fa.label :email,class: "control-label"%>
-													<div class="controls">
-														<%= fa.text_field :email,class:"span12"%>
-													</div><!-- /controls -->
-												</div><!-- /control-group -->
-											</div><!-- /span6 -->
-										</div><!-- /row-fluid -->
-										
 										<div class="row-fluid">
 											<div class="span12">
 												<div class="control-group">
