@@ -202,7 +202,15 @@ $(document).ready(function () {
 
 
 
+$(document).ready(function() {
+    $(".stripe-button-el").hide();
 
+    $('.form_button').click(function(){
+
+        $(".stripe-button-el").trigger('click'); 
+
+  });
+});
 
 $(document).ready(function() {
     $(".form_button").click(function(){

@@ -55,8 +55,13 @@
 							<div class="alt-image img-circle thumb">
 								<img src="img/thumb.jpg" alt="Your Name" class="img-circle">
 							</div>
+								<%if session[:applicant] != nil %>
+								<h3 id="grats"> Congratulations! You have successfully enrolled!</h3>
+								<% end %>
+
 							<div class="span6 intro" id="greeting">
 								<hgroup>
+									<br>
 									<h1>NYC Data Science Academy</h1>
 									<h3>Data is power.</h3>
 								</hgroup>
@@ -579,17 +584,13 @@
 									<div class="span12">
 									</div><!-- /span12 -->
 								</div><!-- /row-fluid -->
-								<%= form_tag url_for(:controller => 'applicants', :action => 'create'), html: {class: "stripe_form"}, :method => 'post' do %>
-								  <article>
-								    <label class="amount">
-								      <span>Amount: $5.00</span>
-								    </label>
-								  </article>
+								<%= form_tag url_for(:controller => 'applicants', :action => 'create_charge'), html: {class: "stripe_form"}, :method => 'post' do %>
+								  
 
 								  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 								          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
 								          data-description="A month's subscription"
-								          data-amount="500"></script>
+								          ></script>
 								<% end %>
 								
 								<%= form_for ApplicantCourse.new, html: {class: "app_course_form"}, url: { controller: "applicants", action: "create"}  do |f| %>
