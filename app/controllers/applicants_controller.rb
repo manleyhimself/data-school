@@ -8,7 +8,7 @@ class ApplicantsController < ApplicationController
   def index
     @applicants = Applicant.all 
     (session[:applicant] = nil if (Time.now - session[:applicant].created_at > 50)) if session[:applicant]
-    (session[:booboo] = nil if (Time.now - session[:booboo] > 50)) if session[:booboo]
+    session[:booboo] = nil #if (Time.now - session[:booboo] > 50)) if session[:booboo]
   end
 
   # GET /applicants/1
