@@ -8,7 +8,6 @@ class ApplicantsController < ApplicationController
   def index
     @applicants = Applicant.all 
     (session[:applicant] = nil if (Time.now - session[:applicant].created_at > 50)) if session[:applicant]
-    (session[:booboo] = nil if (Time.now - session[:booboo] > 50)) if session[:booboo]
   end
 
   # GET /applicants/1
@@ -41,7 +40,6 @@ class ApplicantsController < ApplicationController
       session[:applicant].destroy
       (session[:applicant_course_1].destroy) if session[:applicant_course_1]
       (session[:applicant_course_2].destroy) if session[:applicant_course_2]
-      session[:booboo] = Time.now
       flash[:error] = e.message
       redirect_to action: 'index'
     else

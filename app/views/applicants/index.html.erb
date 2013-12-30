@@ -55,11 +55,9 @@
 								<img src="img/thumb.jpg" alt="Your Name" class="img-circle">
 							</div>
 								<%if session[:applicant] != nil %>
-								<h3 id="grats"> Congratulations! You have successfully enrolled!</h3>
+								<h3 id="grats"> Congratulations! You have successfully enrolled!<br>You will be receiving a receipt shortly. If this email does not arrive, please notify us.</h3>
 								<% end %>
-								<%if session[:booboo] != nil %>
-								<h3 id="grats"> There was an error processing your request. Please, try again or email us.</h3>
-								<% end %>
+								
 
 							<div class="span6 intro" id="greeting">
 								<hgroup>
