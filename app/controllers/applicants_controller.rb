@@ -8,6 +8,7 @@ class ApplicantsController < ApplicationController
   def index
     @applicants = Applicant.all 
     (session[:applicant] = nil if (Time.now - session[:applicant].created_at > 50)) if session[:applicant]
+    (session[:booboo] = nil if (Time.now - session[:booboo].created_at > 50)) if session[:booboo]
   end
 
   # GET /applicants/1
@@ -38,8 +39,9 @@ class ApplicantsController < ApplicationController
     )
     rescue Stripe::CardError => e
       session[:applicant].destroy
-      session[:applicant_course_1].destroy
-      session[:applicant_course_2].destroy
+      (session[:applicant_course_1].destroy) if session[:applicant_course_1]
+      (session[:applicant_course_2].destroy) if session[:applicant_course_2]
+      session[:booboo] = true
       flash[:error] = e.message
       redirect_to action: 'index'
     else

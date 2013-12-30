@@ -57,6 +57,9 @@
 								<%if session[:applicant] != nil %>
 								<h3 id="grats"> Congratulations! You have successfully enrolled!</h3>
 								<% end %>
+								<%if session[:booboo] != nil %>
+								<h3 id="grats"> There was an error processing your request. Please, try again or email us.</h3>
+								<% end %>
 
 							<div class="span6 intro" id="greeting">
 								<hgroup>
