@@ -235,6 +235,7 @@ $(document).ready(function() {
         });
       $(".r-select").val(1100);
       $(".python-select").val(550);
+      //instead of if statement, iterate through everything in .select-form array setting disable to false on each adn removing the 0 value
       if ($('select[name="applicant_course[r_class_payment]"]').is(':disabled')){
             $('select[name="applicant_course[r_class_payment]"]').prop('disabled',false);
             $(".r-select option[value=0]").remove();

@@ -571,11 +571,7 @@
 													<h3></h3>
 
 								</div><!-- /row -->
-								<h8 id="form-instruct">(complete required fields to submit)</h8>
- 								<button class="btn-inverse form_button" disabled>
-									Sign <span>Up</span>
-									<i class="icon-circle-arrow-right"></i>
-								</button>
+								
 							</div><!-- /span4 -->
 							 
 							
@@ -585,6 +581,12 @@
 									<div class="span12">
 									</div><!-- /span12 -->
 								</div><!-- /row-fluid -->
+								<h8 id="form-instruct">(complete required fields to submit)</h8><br>
+ 								<button class="btn-inverse form_button" disabled>
+									Sign <span>Up</span>
+									<i class="icon-circle-arrow-right"></i>
+								</button>
+
 								<%= form_tag url_for(:controller => 'applicants', :action => 'create_charge'), html: {class: "stripe_form"}, :method => 'post' do %>
 								  
 
