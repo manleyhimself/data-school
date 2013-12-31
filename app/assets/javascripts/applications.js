@@ -122,6 +122,24 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 
+    $('#Hadoop-begin-apr-header').click(function(){
+        
+        $("#Hadoop-begin-apr-info").show(); 
+
+         $('.curriculum').each(function(index,value) { 
+    
+             if (!(value.id === "Hadoop-begin-apr-info")) $('#' + value.id).hide();
+
+
+         })
+
+    });
+
+});
+
+$(document).ready(function() {
+
+
     $('#r-inter-header').click(function(){
         
         $("#r-inter-info").show(); 
@@ -129,6 +147,40 @@ $(document).ready(function() {
          $('.curriculum').each(function(index,value) { 
     
              if (!(value.id === "r-inter-info")) $('#' + value.id).hide();
+
+
+         })
+
+    });
+
+});
+$(document).ready(function() {
+
+
+    $('#Kaggle-adv-apr-header').click(function(){
+        
+        $("#Kaggle-adv-apr-info").show(); 
+
+         $('.curriculum').each(function(index,value) { 
+    
+             if (!(value.id === "Kaggle-adv-apr-info")) $('#' + value.id).hide();
+
+
+         })
+
+    });
+
+});
+$(document).ready(function() {
+
+
+    $('#Tableau-begin-may-header').click(function(){
+        
+        $("#Tableau-begin-may-info").show(); 
+
+         $('.curriculum').each(function(index,value) { 
+    
+             if (!(value.id === "Tableau-begin-may-info")) $('#' + value.id).hide();
 
 
          })
