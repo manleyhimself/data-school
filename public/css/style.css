@@ -443,7 +443,7 @@ a:hover {
 
 /* Section 4 */
 
-#r-header:hover, #python-header:hover {
+.class-header:hover {
   color: #47A888;
   cursor: pointer; 
 }

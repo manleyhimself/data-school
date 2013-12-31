@@ -11,18 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229043854) do
+ActiveRecord::Schema.define(version: 20131231051618) do
 
   create_table "applicant_courses", force: true do |t|
     t.integer  "course_id"
     t.integer  "applicant_id"
-    t.integer  "r_class_payment"
-    t.integer  "python_class_payment"
-    t.boolean  "r_session"
-    t.boolean  "python_session"
-    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "paid"
+    t.boolean  "payment_confirmed"
   end
 
   add_index "applicant_courses", ["applicant_id"], name: "index_applicant_courses_on_applicant_id"
@@ -33,6 +30,7 @@ ActiveRecord::Schema.define(version: 20131229043854) do
     t.string   "name"
     t.string   "slug"
     t.integer  "phone_number"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "total_paid"
@@ -42,6 +40,8 @@ ActiveRecord::Schema.define(version: 20131229043854) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "session_cost"
+    t.integer  "class_cost"
   end
 
   create_table "sessions", force: true do |t|
