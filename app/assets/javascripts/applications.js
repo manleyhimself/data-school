@@ -231,7 +231,6 @@ $(document).ready(function() {
 });
 
 
-// _____________________________
 
 $(document).ready(function () {
 
@@ -425,44 +424,41 @@ $(document).ready(function() {
       $( '.app_course_form' ).each(function(){
             this.reset();
         });
-      $(".r-select").val(1100);
-      $(".python-select").val(850);
-      //instead of if statement, iterate through everything in .select-form array setting disable to false on each adn removing the 0 value, must set same class for each checkbox
-      if ($('.r-select').is(':disabled')){
-            $('.r-select').prop('disabled',false);
-            $(".r-select option[value=0]").remove();
-            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
-            $("#total-tuition h3").text('$'+value);
-        }else if($('.python-select').is(':disabled')){
-            $('.python-select').prop('disabled',false);
-            $(".python-select option[value=0]").remove();
-            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
-            $("#total-tuition h3").text('$'+value);
-        }
-        else {
-            var value = parseInt($(".r-select").val()) + parseInt($(".python-select").val());
-            $("#total-tuition h3").text('$'+value);
-        }
         $('.form_button').addClass('button_disabled').attr('disabled', true);
         $("#form-instruct").show(); 
     });
   });
 });
 
+
 $(document).ready(function() {
-    var selects = $('.select-form');
-    $(document).on('change', selects, function() {
-    var value = 0;
-    selects.each(function(){ value += +this.value; });
-        $("#total-tuition h3").text('$'+value);
+    var checkArray = $('.checker');
+    $(document).on('change', checkArray, function() {
+      checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+       return ($("#"+checkBox.id).is(':checked'));
+      });
+    var total = 0;
+    for (var i = 0; i < checkArray.length; i++) {
+        total += $("#"+checkArray[i].id).val() << 0;
+    }
+        $("#total-tuition h3").text('$'+total);
     }).trigger('change');
 });
 
 
-
-
-
-
+$(document).ready(function() {
+    $('.checker').on('click', function() {
+    var checkArray = $('.checker');
+        checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+          return ($("#"+checkBox.id).is(':checked'));
+      });
+    var total = 0;
+    for (var i = 0; i < checkArray.length; i++) {
+        total += $("#"+checkArray[i].id).val() << 0;
+    }
+        $("#total-tuition h3").text('$'+total);
+  })
+});
 
 
 

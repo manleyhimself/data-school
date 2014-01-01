@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20131231051618) do
     t.integer  "applicant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "paid"
     t.boolean  "payment_confirmed"
   end
 
@@ -40,8 +39,7 @@ ActiveRecord::Schema.define(version: 20131231051618) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "session_cost"
-    t.integer  "class_cost"
+    t.integer  "cost"
   end
 
   create_table "sessions", force: true do |t|

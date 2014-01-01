@@ -54,24 +54,26 @@ class ApplicantsController < ApplicationController
   # POST /applicants
   # POST /applicants.json
   def create
-    session[:amount] = if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
-       (params["applicant_course"]["r_class_payment"].to_i + params["applicant_course"]["python_class_payment"].to_i) * 100
-      elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
-        params["applicant_course"]["r_class_payment"].to_i * 100
-      else
-        params["applicant_course"]["python_class_payment"].to_i * 100
-      end
-    session[:applicant] = Applicant.create(name: params['applicant']['name'].strip, phone_number: params['applicant']["phone_number"].gsub(/\D/, ''))
+    binding.pry
+    # session[:amount] = if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
+    #    (params["applicant_course"]["r_class_payment"].to_i + params["applicant_course"]["python_class_payment"].to_i) * 100
+    #   elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
+    #     params["applicant_course"]["r_class_payment"].to_i * 100
+    #   else
+    #     params["applicant_course"]["python_class_payment"].to_i * 100
+    #   end
+    # session[:applicant] = Applicant.create(name: params['applicant']['name'].strip, phone_number: params['applicant']["phone_number"].gsub(/\D/, ''))
 
-    if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
-     session[:applicant_course_1] = @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-     session[:applicant_course_2]= @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-    elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
-     session[:applicant_course_1] = @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-    else
-     session[:applicant_course_2] = @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-    end
-    redirect_to action: 'index'
+    # if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
+    #  session[:applicant_course_1] = @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
+    #  session[:applicant_course_2]= @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
+    # elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
+    #  session[:applicant_course_1] = @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
+    # else
+    #  session[:applicant_course_2] = @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
+    # end
+    # redirect_to action: 'index'
+    
   end
 
   # PATCH/PUT /applicants/1
