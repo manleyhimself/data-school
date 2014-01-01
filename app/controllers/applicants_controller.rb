@@ -38,42 +38,43 @@ class ApplicantsController < ApplicationController
     )
     rescue Stripe::CardError => e
       session[:applicant].destroy
-      (session[:applicant_course_1].destroy) if session[:applicant_course_1]
-      (session[:applicant_course_2].destroy) if session[:applicant_course_2]
+      session[:applicant_courses].map(&:destroy)
+      session[:applicant] = nil
+      session[:applicant_courses] = nil
       flash[:error] = e.message
       redirect_to action: 'index'
     else
       session[:amount] = nil
-      session[:applicant_course_1] = nil
-      session[:applicant_course_2] = nil
+      session[:applicant_courses] = nil
       flash[:notice] = 'You have sucessfully signed up!'
       redirect_to action: 'index', :flash => { :success => 'You have sucessfully signed up!'
- }
+      }
   end
 
   # POST /applicants
   # POST /applicants.json
   def create
-    binding.pry
-    # session[:amount] = if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
-    #    (params["applicant_course"]["r_class_payment"].to_i + params["applicant_course"]["python_class_payment"].to_i) * 100
-    #   elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
-    #     params["applicant_course"]["r_class_payment"].to_i * 100
-    #   else
-    #     params["applicant_course"]["python_class_payment"].to_i * 100
-    #   end
-    # session[:applicant] = Applicant.create(name: params['applicant']['name'].strip, phone_number: params['applicant']["phone_number"].gsub(/\D/, ''))
+   
+    session[:applicant] = Applicant.create(name: params['applicant']['name'].strip, phone_number: params['applicant']["phone_number"].gsub(/\D/, ''), comment: params['applicant']['comment'])
 
-    # if !!(params["course_id"]["r-class"] && params["course_id"]["python-class"])
-    #  session[:applicant_course_1] = @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-    #  session[:applicant_course_2]= @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-    # elsif !!(params["course_id"]["r-class"] && !params["course_id"]["python-class"])
-    #  session[:applicant_course_1] = @applicant_course = ApplicantCourse.create(course_id: 1, r_class_payment: params["applicant_course"]["r_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-    # else
-    #  session[:applicant_course_2] = @applicant_course = ApplicantCourse.create(course_id: 2, python_class_payment: params["applicant_course"]["python_class_payment"], comment: params["applicant_course"]["comment"], applicant_id: session[:applicant].id)
-    # end
-    # redirect_to action: 'index'
-    
+
+    session[:applicant_courses] = []
+
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 1, applicant_id: session[:applicant].id)) if params["course_id"]["r-class"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 2, applicant_id: session[:applicant].id)) if params["course_id"]["r-begin-mar"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 3, applicant_id: session[:applicant].id)) if params["course_id"]["D3-begin-mar-class"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 4, applicant_id: session[:applicant].id)) if params["course_id"]["Hadoop-begin-apr"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 5, applicant_id: session[:applicant].id)) if params["course_id"]["Kaggle-adv-apr"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 6, applicant_id: session[:applicant].id)) if params["course_id"]["Tableau-begin-may"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 7, applicant_id: session[:applicant].id)) if params["course_id"]["r-inter-may-class"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 8, applicant_id: session[:applicant].id)) if params["course_id"]["r-inter-june-class"]
+    (session[:applicant_courses]<< ApplicantCourse.create(course_id: 9, applicant_id: session[:applicant].id)) if params["course_id"]["processing-begin-june-class"]
+
+    session[:amount] = session[:applicant_courses].map do |applicant_course|
+      applicant_course.course.cost * 100
+    end.inject(:+)
+
+    redirect_to action: 'index'
   end
 
   # PATCH/PUT /applicants/1
