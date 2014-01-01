@@ -224,7 +224,11 @@ $(document).ready(function() {
     });
 
 });
-
+$(document).ready(function() {
+    $("#form-button-div").click(function(event){
+        if ($('.form_button').is(':disabled')) $('html, body').animate({scrollTop: '+=270px'}, 800);
+    });
+});
 
 
 // _____________________________
@@ -247,12 +251,83 @@ $(document).ready(function () {
             },
             "course_id[r-class]": {
                 required: function(element) {
-                    return !($("#python-class-check").is(':checked'));
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
                 }
             },
-            "course_id[python-class]": {
+            "course_id[r-begin-mar]": {
                 required: function(element) {
-                    return !($("#r-class").is(':checked'));
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
+                }
+            },
+            "course_id[D3-begin-mar-class]": {
+                required: function(element) {
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
+                }
+            },
+            "course_id[Hadoop-begin-apr]": {
+                required: function(element) {
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
+                }
+            },
+            "course_id[Kaggle-adv-apr]": {
+                required: function(element) {
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
+                }
+            },
+            "course_id[Tableau-begin-may]": {
+                required: function(element) {
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
+                }
+            },
+            "course_id[r-inter-may-class]": {
+                required: function(element) {
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
+                }
+            },
+            "course_id[r-inter-june-class]": {
+                required: function(element) {
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
+                }
+            },
+            "course_id[processing-begin-june-class]": {
+                required: function(element) {
+                    var checkArray = $('.checker');
+                    checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
+                      return ($("#"+checkBox.id).is(':checked'));
+                    });
+                    return !(checkArray.length > 0)
                 }
             }
         },
@@ -260,7 +335,28 @@ $(document).ready(function () {
             "course_id[r-class]": {
                 required: "Please choose one class to attend."
             },
-            "course_id[python-class]": {
+            "course_id[r-begin-mar]": {
+                  required: "Please choose one class to attend."
+            },
+             "course_id[D3-begin-mar-class]": {
+                  required: "Please choose one class to attend."
+            },
+             "course_id[Hadoop-begin-apr]": {
+                  required: "Please choose one class to attend."
+            },
+             "course_id[Kaggle-adv-apr]": {
+                  required: "Please choose one class to attend."
+            },
+             "course_id[Tableau-begin-may]": {
+                  required: "Please choose one class to attend."
+            },
+             "course_id[r-inter-may-class]": {
+                  required: "Please choose one class to attend."
+            },
+             "course_id[r-inter-june-class]": {
+                  required: "Please choose one class to attend."
+            },
+             "course_id[processing-begin-june-class]": {
                   required: "Please choose one class to attend."
             }
         }
@@ -268,23 +364,23 @@ $(document).ready(function () {
 
     // programmatically check any element using the `.valid()` method.
     $('#applicant_phone_number').on('blur', function () {
-        $('input[name="applicant[phone_number]"]').valid();
+        $('#applicant_phone_number').valid();
     });
     $('#applicant_name').on('blur', function () {
-        $('input[name="applicant[name]"]').valid();
+        $('#applicant_name').valid();
     });
     $('#applicant_email').on('blur', function () {
         $('input[name="applicant[email]"]').valid();
     });
-    $('#r-class').on('click', function () {
-        $('input[name="course_id[r-class]"]').valid();
-        $('input[name="course_id[python-class]"]').valid();
+   
+    $('.checker').on('click', function(){
+       
+          $('.checker').each(function(index,value) { 
+                $("#"+value.id).valid();
 
+         })
     });
-        $('#python-class-check').on('click', function () {
-            $('input[name="course_id[r-class]"]').valid();
-            $('input[name="course_id[python-class]"]').valid();
-        });
+    
         $('.app_course_form').bind('change keyup', function() {
         if($(this).validate().checkForm()) {
             $('.form_button').removeClass('button_disabled').attr('disabled', false);
