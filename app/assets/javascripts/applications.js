@@ -78,28 +78,31 @@ $(document).ready(function() {
 
 
          })
+        $('html, body').animate({
+            scrollTop: $("#r-info").offset().top
+        }, 2000);
 
     });
 
 });
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
 
-    $('#python-header').click(function(){
+//     $('#python-header').click(function(){
         
-        $("#python-info").show(); 
+//         $("#python-info").show(); 
 
-         $('.curriculum').each(function(index,value) { 
+//          $('.curriculum').each(function(index,value) { 
     
-             if (!(value.id === "python-info")) $('#' + value.id).hide();
+//              if (!(value.id === "python-info")) $('#' + value.id).hide();
 
 
-         })
+//          })
 
-    });
+//     });
 
-});
+// });
 
 $(document).ready(function() {
 
@@ -114,7 +117,9 @@ $(document).ready(function() {
 
 
          })
-
+          $('html, body').animate({
+            scrollTop: $("#D3-begin-mar-info").offset().top
+        }, 2000);
     });
 
 });
@@ -132,6 +137,9 @@ $(document).ready(function() {
 
 
          })
+          $('html, body').animate({
+            scrollTop: $("#Hadoop-begin-apr-info").offset().top
+        }, 2000);
 
     });
 
@@ -140,16 +148,19 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 
-    $('#r-inter-header').click(function(){
+    $('#r-inter-may-header').click(function(){
         
-        $("#r-inter-info").show(); 
+        $("#r-inter-may-info").show(); 
 
          $('.curriculum').each(function(index,value) { 
     
-             if (!(value.id === "r-inter-info")) $('#' + value.id).hide();
+             if (!(value.id === "r-inter-may-info")) $('#' + value.id).hide();
 
 
          })
+        $('html, body').animate({
+            scrollTop: $("#r-inter-may-info").offset().top
+        }, 2000);
 
     });
 
@@ -167,7 +178,28 @@ $(document).ready(function() {
 
 
          })
+          $('html, body').animate({
+            scrollTop: $("#Kaggle-adv-apr-info").offset().top
+        }, 2000);
+    });
 
+});
+$(document).ready(function() {
+
+
+    $('#processing-begin-june-header').click(function(){
+        
+        $("#processing-begin-june-info").show(); 
+
+         $('.curriculum').each(function(index,value) { 
+    
+             if (!(value.id === "processing-begin-june-info")) $('#' + value.id).hide();
+
+
+         })
+          $('html, body').animate({
+            scrollTop: $("#processing-begin-june-info").offset().top
+        }, 2000);
     });
 
 });
@@ -185,28 +217,12 @@ $(document).ready(function() {
 
          })
 
+          $('html, body').animate({
+            scrollTop: $("#Tableau-begin-may-info").offset().top
+        }, 2000);
+
     });
 
-});
-
-
-
-$(document).ready(function() {
-    $("#r-header").click(function(event){
-        $('html, body').animate({scrollTop: '+=400px'}, 800);
-    });
-});
-
-$(document).ready(function() {
-    $("#python-header").click(function(event){
-        $('html, body').animate({scrollTop: '+=270px'}, 800);
-    });
-});
-
-$(document).ready(function() {
-    $("#r-inter-header").click(function(event){
-        $('html, body').animate({scrollTop: '+=200px'}, 800);
-    });
 });
 
 
