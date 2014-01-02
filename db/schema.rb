@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231051618) do
+ActiveRecord::Schema.define(version: 20140102020218) do
 
   create_table "applicant_courses", force: true do |t|
     t.integer  "course_id"
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 20131231051618) do
     t.string   "name"
     t.string   "slug"
     t.integer  "phone_number"
-    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "total_paid"
+    t.text     "comment"
   end
 
   create_table "courses", force: true do |t|
