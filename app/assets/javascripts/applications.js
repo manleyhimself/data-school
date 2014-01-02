@@ -432,8 +432,8 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
+    $(document).on('change', function() {
     var checkArray = $('.checker');
-    $(document).on('change', checkArray, function() {
       checkArray = jQuery.grep(checkArray, function( checkBox, index ) {
        return ($("#"+checkBox.id).is(':checked'));
       });
