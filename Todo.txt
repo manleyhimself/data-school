@@ -1,0 +1,10 @@
+Todo:
+
+1. turn on heroku "https"
+2. testimonials
+3. blog
+
+
+6. actionmailer
+
+
