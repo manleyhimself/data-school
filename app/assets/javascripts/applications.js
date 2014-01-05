@@ -63,204 +63,29 @@ $(document).ready(function() {
     })
 
 });
-// $(document).ready(function() {
-////make this work!!!!!
-
-//     $('.class-header').click(function(){
-
-//         var prefixString=["" + $(this).id].join("").slice(0,-6);
-
-//         $("#"+prefixString+"info").show(); 
-
-//          $('.curriculum').each(function(index,value) { 
-    
-//              if (!(value.id === prefixString+"info")) $('#' + value.id).hide();
-
-//          })
-//          $('.header-div').each(function(index,value) { 
-    
-//              if (!(value.id === prefixString+"header-div")) $('#' + value.id).hide();
-
-//          })
-//         $('html, body').animate({
-//             scrollTop: $("#"+prefixString+"header").offset().top
-//         }, 0);
-
-//     });
-
-// });
-
 $(document).ready(function() {
 
 
-    $('#r-header').click(function(){
+    $('.class-header').click(function(){
 
-        $("#r-info").show(); 
+        var prefixString=["" + $(this)[0].id].join("").slice(0,-6);
+
+        $(this).addClass("green-select");
+
+        $("#"+prefixString+"info").show(); 
 
          $('.curriculum').each(function(index,value) { 
     
-             if (!(value.id === "r-info")) $('#' + value.id).hide();
+             if (!(value.id === prefixString+"info")) $('#' + value.id).hide();
 
          })
          $('.header-div').each(function(index,value) { 
     
-             if (!(value.id === "r-header-div")) $('#' + value.id).hide();
+             if (!(value.id === prefixString+"header-div")) $('#' + value.id).hide();
 
          })
         $('html, body').animate({
-            scrollTop: $("#r-header").offset().top
-        }, 0);
-
-    });
-
-});
-
-
-$(document).ready(function() {
-
-
-    $('#D3-begin-mar-header').click(function(){
-        
-        $("#D3-begin-mar-info").show(); 
-
-         $('.curriculum').each(function(index,value) { 
-    
-             if (!(value.id === "D3-begin-mar-info")) $('#' + value.id).hide();
-
-
-         })
-         $('.header-div').each(function(index,value) { 
-    
-             if (!(value.id === "D3-begin-mar-header-div")) $('#' + value.id).hide();
-
-         })
-          $('html, body').animate({
-            scrollTop: $("#D3-begin-mar-header").offset().top
-        }, 0);
-    });
-
-});
-
-$(document).ready(function() {
-
-
-    $('#Hadoop-begin-apr-header').click(function(){
-        
-        $("#Hadoop-begin-apr-info").show(); 
-
-         $('.curriculum').each(function(index,value) { 
-    
-             if (!(value.id === "Hadoop-begin-apr-info")) $('#' + value.id).hide();
-
-
-         })
-         $('.header-div').each(function(index,value) { 
-    
-             if (!(value.id === "Hadoop-begin-apr-header-div")) $('#' + value.id).hide();
-
-         })
-          $('html, body').animate({
-            scrollTop: $("#Hadoop-begin-apr-header").offset().top
-        }, 0);
-
-    });
-
-});
-
-$(document).ready(function() {
-
-
-    $('#r-inter-may-header').click(function(){
-        
-        $("#r-inter-may-info").show(); 
-
-         $('.curriculum').each(function(index,value) { 
-    
-             if (!(value.id === "r-inter-may-info")) $('#' + value.id).hide();
-
-
-         })
-        $('.header-div').each(function(index,value) { 
-    
-             if (!(value.id === "r-inter-may-header-div")) $('#' + value.id).hide();
-
-         })
-        $('html, body').animate({
-            scrollTop: $("#r-inter-may-header").offset().top
-        }, 0);
-
-    });
-
-});
-$(document).ready(function() {
-
-
-    $('#Kaggle-adv-apr-header').click(function(){
-        
-        $("#Kaggle-adv-apr-info").show(); 
-
-         $('.curriculum').each(function(index,value) { 
-    
-             if (!(value.id === "Kaggle-adv-apr-info")) $('#' + value.id).hide();
-
-
-         })
-          $('.header-div').each(function(index,value) { 
-    
-             if (!(value.id === "Kaggle-adv-apr-header-div")) $('#' + value.id).hide();
-
-         })
-          $('html, body').animate({
-            scrollTop: $("#Kaggle-adv-apr-header").offset().top
-        }, 0);
-    });
-
-});
-$(document).ready(function() {
-
-
-    $('#processing-begin-june-header').click(function(){
-        
-        $("#processing-begin-june-info").show(); 
-
-         $('.curriculum').each(function(index,value) { 
-    
-             if (!(value.id === "processing-begin-june-info")) $('#' + value.id).hide();
-
-
-         })
-          $('.header-div').each(function(index,value) { 
-    
-             if (!(value.id === "processing-begin-june-header-div")) $('#' + value.id).hide();
-
-         })
-          $('html, body').animate({
-            scrollTop: $("#processing-begin-june-header").offset().top
-        }, 0);
-    });
-
-});
-$(document).ready(function() {
-
-
-    $('#Tableau-begin-may-header').click(function(){
-        
-        $("#Tableau-begin-may-info").show(); 
-
-         $('.curriculum').each(function(index,value) { 
-    
-             if (!(value.id === "Tableau-begin-may-info")) $('#' + value.id).hide();
-
-
-         })
-          $('.header-div').each(function(index,value) { 
-    
-             if (!(value.id === "Tableau-begin-may-header-div")) $('#' + value.id).hide();
-
-         })
-
-          $('html, body').animate({
-            scrollTop: $("#Tableau-begin-may-header").offset().top
+            scrollTop: $("#"+prefixString+"header").offset().top
         }, 0);
 
     });
@@ -282,6 +107,7 @@ $(document).ready(function() {
        })
     
       var prefixString=["" + $(this).parent().parent()[0].id].join("").slice(0,-4);
+      $("#"+prefixString+"header").removeClass("green-select");
       $('html, body').animate({
             scrollTop: $("#"+prefixString+"header").offset().top
         }, 0);

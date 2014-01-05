@@ -448,6 +448,10 @@ a:hover {
   cursor: pointer; 
 }
 
+.green-select {
+  color: #47A888 !important;
+}
+
 #section4  h2 {
 	margin-left: -4px;
 }
