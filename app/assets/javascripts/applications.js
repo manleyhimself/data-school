@@ -1,5 +1,6 @@
 //$("#"+($('.checker')[0].id)).is(':checked');
 //$("#"+($('.select-form')[0].id)).is(':disabled');
+//$('.curriculum')[1].id.slice(0,-5);
 
 
 $(document).ready(function() {
@@ -54,16 +55,40 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
-    $("#r-info").show(); 
-
     $('.curriculum').each(function(index,value) { 
     
-        if (!(value.id === "r-info")) $('#' + value.id).hide();
+         $('#' + value.id).hide();
 
 
     })
 
 });
+// $(document).ready(function() {
+////make this work!!!!!
+
+//     $('.class-header').click(function(){
+
+//         var prefixString=["" + $(this).id].join("").slice(0,-6);
+
+//         $("#"+prefixString+"info").show(); 
+
+//          $('.curriculum').each(function(index,value) { 
+    
+//              if (!(value.id === prefixString+"info")) $('#' + value.id).hide();
+
+//          })
+//          $('.header-div').each(function(index,value) { 
+    
+//              if (!(value.id === prefixString+"header-div")) $('#' + value.id).hide();
+
+//          })
+//         $('html, body').animate({
+//             scrollTop: $("#"+prefixString+"header").offset().top
+//         }, 0);
+
+//     });
+
+// });
 
 $(document).ready(function() {
 
@@ -76,33 +101,20 @@ $(document).ready(function() {
     
              if (!(value.id === "r-info")) $('#' + value.id).hide();
 
+         })
+         $('.header-div').each(function(index,value) { 
+    
+             if (!(value.id === "r-header-div")) $('#' + value.id).hide();
 
          })
         $('html, body').animate({
-            scrollTop: $("#r-info").offset().top
-        }, 2000);
+            scrollTop: $("#r-header").offset().top
+        }, 0);
 
     });
 
 });
 
-// $(document).ready(function() {
-
-
-//     $('#python-header').click(function(){
-        
-//         $("#python-info").show(); 
-
-//          $('.curriculum').each(function(index,value) { 
-    
-//              if (!(value.id === "python-info")) $('#' + value.id).hide();
-
-
-//          })
-
-//     });
-
-// });
 
 $(document).ready(function() {
 
@@ -117,9 +129,14 @@ $(document).ready(function() {
 
 
          })
+         $('.header-div').each(function(index,value) { 
+    
+             if (!(value.id === "D3-begin-mar-header-div")) $('#' + value.id).hide();
+
+         })
           $('html, body').animate({
-            scrollTop: $("#D3-begin-mar-info").offset().top
-        }, 2000);
+            scrollTop: $("#D3-begin-mar-header").offset().top
+        }, 0);
     });
 
 });
@@ -137,9 +154,14 @@ $(document).ready(function() {
 
 
          })
+         $('.header-div').each(function(index,value) { 
+    
+             if (!(value.id === "Hadoop-begin-apr-header-div")) $('#' + value.id).hide();
+
+         })
           $('html, body').animate({
-            scrollTop: $("#Hadoop-begin-apr-info").offset().top
-        }, 2000);
+            scrollTop: $("#Hadoop-begin-apr-header").offset().top
+        }, 0);
 
     });
 
@@ -158,9 +180,14 @@ $(document).ready(function() {
 
 
          })
+        $('.header-div').each(function(index,value) { 
+    
+             if (!(value.id === "r-inter-may-header-div")) $('#' + value.id).hide();
+
+         })
         $('html, body').animate({
-            scrollTop: $("#r-inter-may-info").offset().top
-        }, 2000);
+            scrollTop: $("#r-inter-may-header").offset().top
+        }, 0);
 
     });
 
@@ -178,9 +205,14 @@ $(document).ready(function() {
 
 
          })
+          $('.header-div').each(function(index,value) { 
+    
+             if (!(value.id === "Kaggle-adv-apr-header-div")) $('#' + value.id).hide();
+
+         })
           $('html, body').animate({
-            scrollTop: $("#Kaggle-adv-apr-info").offset().top
-        }, 2000);
+            scrollTop: $("#Kaggle-adv-apr-header").offset().top
+        }, 0);
     });
 
 });
@@ -197,9 +229,14 @@ $(document).ready(function() {
 
 
          })
+          $('.header-div').each(function(index,value) { 
+    
+             if (!(value.id === "processing-begin-june-header-div")) $('#' + value.id).hide();
+
+         })
           $('html, body').animate({
-            scrollTop: $("#processing-begin-june-info").offset().top
-        }, 2000);
+            scrollTop: $("#processing-begin-june-header").offset().top
+        }, 0);
     });
 
 });
@@ -216,14 +253,41 @@ $(document).ready(function() {
 
 
          })
+          $('.header-div').each(function(index,value) { 
+    
+             if (!(value.id === "Tableau-begin-may-header-div")) $('#' + value.id).hide();
+
+         })
 
           $('html, body').animate({
-            scrollTop: $("#Tableau-begin-may-info").offset().top
-        }, 2000);
+            scrollTop: $("#Tableau-begin-may-header").offset().top
+        }, 0);
 
     });
 
 });
+
+$(document).ready(function() {
+    $(".hide-curriculum").click(function(event){
+      $('.curriculum').each(function(index,value) { 
+    
+            $('#' + value.id).hide();
+
+
+        })
+      $('.header-div').each(function(index,value) { 
+  
+            $('#' + value.id).show();
+
+       })
+    
+      var prefixString=["" + $(this).parent().parent()[0].id].join("").slice(0,-4);
+      $('html, body').animate({
+            scrollTop: $("#"+prefixString+"header").offset().top
+        }, 0);
+    });
+});
+
 $(document).ready(function() {
     $("#form-button-div").click(function(event){
         if ($('.form_button').is(':disabled')) $('html, body').animate({scrollTop: '+=270px'}, 800);
